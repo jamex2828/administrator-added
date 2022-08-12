@@ -1,0 +1,106 @@
+[
+  {
+    "_id": "a2049934-a1bc-4d19-ac32-02360aba0264",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://10.10.10.58:1337/api/auth/local/register",
+    "url": "http://10.10.10.58:1337/api/auth/local/register",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-08-11T02:08:56.099Z",
+    "modified": "2022-08-11T02:08:56.714Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "e06d870a-dd97-449e-9b1b-acccaff5cb53",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://10.10.10.58:1337/api/auth/local/register",
+    "url": "http://10.10.10.58:1337/api/users",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-08-11T02:11:21.270Z",
+    "modified": "2022-08-11T03:59:01.330Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ce9e587f-8c3e-44f7-bebb-12e21e0040b8",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://10.10.10.58:1337/api/local/register",
+    "url": "http://10.10.10.58:1337/api/local/register",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-08-11T02:15:10.272Z",
+    "modified": "2022-08-11T02:15:10.282Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"data\": {\r\n    \"username\": \"sample user\",\r\n    \"email\": \"sample@gmail.com\",\r\n    \"password\": \"user123\"\r\n  }\r\n}\r\n ",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3a7e10b5-4b93-4bbc-865e-75498df26999",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://:1337/api/auth/local/register",
+    "url": "http://:1337/api/auth/local/register",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-08-11T02:15:46.740Z",
+    "modified": "2022-08-11T02:15:46.751Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"data\": {\r\n    \"username\": \"sample user\",\r\n    \"email\": \"sample@gmail.com\",\r\n    \"password\": \"user123\"\r\n  }\r\n}\r\n ",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "228b6136-6a39-46d7-8faf-111bcaa2663e",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://1337/api/auth/local/register",
+    "url": "http://1337/api/auth/local/register",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-08-11T02:15:50.964Z",
+    "modified": "2022-08-11T02:15:50.981Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"data\": {\r\n    \"username\": \"sample user\",\r\n    \"email\": \"sample@gmail.com\",\r\n    \"password\": \"user123\"\r\n  }\r\n}\r\n ",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "31bada86-3a69-4056-b0c8-6586c417a2dc",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://10.10.10.58:1337.in.ngrok.io/api/auth/local/register",
+    "url": "http://10.10.10.58:1337/api/auth/local/register",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-08-11T02:24:10.780Z",
+    "modified": "2022-08-11T10:18:33.341Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \n    \"username\": \"sample user\",\n    \"email\": \"sample@gmail.com\",\n    \"password\": \"user123\"\n  \n}\n ",
+      "form": []
+    },
+    "tests": []
+  }
+]
