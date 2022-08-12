@@ -7,3 +7,4 @@ Maka register/login na ug admin, tapos maka login napud ug borrower.
 ****** Kung makabantay mo nga pag maka login sa admin ug borrower kay pareha rag ma route, ge as is sa nalang nga borrower_page.dart ge route para sa naay ma try2.
 
 
+"# administrator-added" 
