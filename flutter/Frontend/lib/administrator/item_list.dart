@@ -14,7 +14,7 @@ class MyList extends StatefulWidget {
 
 class _MyListState extends State<MyList> {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
-  Future getItems()
+  Future getItems()                                                             //not working
   // Future<void> getItems()
   async {
     resultNotifier.value = RequestLoadInProgress();
