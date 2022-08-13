@@ -225,13 +225,18 @@ class _MyFormState extends State<MyForm> {
                           officeDesignationController.text,
                           serialNumController.text);
                     },
-                    child: const Text(
-                      'Add Item',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    )),
+                     style: ElevatedButton.styleFrom(
+                                primary: const Color(0xfffd5800),
+                              ),
+                              child: const Text("Add Item"),
+                    // child: const Text(
+                    //   'Add Item',
+                    //   style: TextStyle(
+                    //       fontSize: 18,
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Colors.white),
+                    // )
+                    ),
 
                 // child: MaterialButton(
                 //   onPressed: addItem,

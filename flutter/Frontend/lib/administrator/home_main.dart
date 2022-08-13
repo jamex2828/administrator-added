@@ -38,14 +38,14 @@ class _HomeState extends State<Home> {
       switch (index) {
         case 0:
           {
-            _title = "Add Item";
-            _body = MyForm();
+            _title = "Items";
+            _body = MyList();
             break;
           }
         case 1:
           {
-            _title = "List";
-            _body = MyList();
+            _title = "Add Item";
+            _body = MyForm();
             break;
           }
       }
@@ -60,8 +60,8 @@ class _HomeState extends State<Home> {
       body: _body,
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
           BottomNavigationBarItem(icon: Icon(Icons.table_chart), label: 'View'),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
         ],
         currentIndex: _currentIndex,
         onTap: _onTap,
