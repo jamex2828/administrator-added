@@ -1,3 +1,4 @@
+import 'package:Login/administrator/add_item.dart';
 import 'package:Login/administrator/details.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,13 +15,16 @@ class MyList extends StatefulWidget {
 
 class _MyListState extends State<MyList> {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
-  Future getItems()                                                             //not working
+
+  late int id;
+  Future getItems() //not working
   // Future<void> getItems()
   async {
     resultNotifier.value = RequestLoadInProgress();
     final response = await http.get(
-      Uri.parse('http://localhost:1337/api/items'),
+      Uri.parse('http://192.168.1.19:1337/api/items'),
     );
+
     print('Status code: ${response.statusCode}');
     print('Headers: ${response.headers}');
     print('Item: ${response.body}');
@@ -32,6 +36,15 @@ class _MyListState extends State<MyList> {
       resultNotifier.value = RequestLoadFailure();
     } else {
       resultNotifier.value = RequestLoadSuccess(response.body);
+    }
+
+    @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      if (id != 0) {
+        getItems();
+      }
     }
   }
 
@@ -49,8 +62,22 @@ class _MyListState extends State<MyList> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
+                    // title: Text(snapshot.data[index].propertyNum),
+                    // subtitle: Text(snapshot.data[index].description),
+                    ///////////////////////////////////////////////////////////////////
+                    isThreeLine: true,
                     title: Text(snapshot.data[index].propertyNum),
-                    subtitle: Text(snapshot.data[index].description),
+                    subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("by. " + snapshot.data[index].description),
+                          Text(snapshot.data[index].acquisitionDate),
+                          Text(snapshot.data[index].estimatedLife),
+                          Text(snapshot.data[index].officeDesignation),
+                          Text(snapshot.data[index].serialNum),
+                        ]),
+
+                    /////////////////////////////////////////////////////////////////////////////
                     onTap: () {
                       Navigator.push(
                           context,

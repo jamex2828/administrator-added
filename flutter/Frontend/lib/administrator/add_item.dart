@@ -1,12 +1,14 @@
 import 'dart:convert';
-
+import 'package:Login/administrator/home_main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:Login/administrator/data_class.dart';
 
+
 class HomePageManager {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
+  
 
   Future addItem(propertyNum, description, acquisitionDate, estimatedLife,      //ADD ITEM
       officeDesignation, serialNum) async {
@@ -26,7 +28,8 @@ class HomePageManager {
         'officeDesignation': officeDesignation,
         'serialNum': serialNum,
       }
-    });
+    }
+    );
     var response = await http.post(
       url,
       headers: headers,
@@ -36,6 +39,8 @@ class HomePageManager {
     print('Status code: ${response.statusCode}');
     print('Item List: ${response.body}');
     _handleResponse(response);
+
+    //  Navigator.push(context, new MaterialPageRoute(builder: (context)=>Home(1,0)));
   }
 
   void _handleResponse(Response response) {
@@ -47,11 +52,13 @@ class HomePageManager {
   }
 }
 
+
 class MyForm extends StatefulWidget {
-  // int id;
-  // MyForm(this.id);
+  int id;
+  MyForm(this.id);
   @override
   _MyFormState createState() => _MyFormState();
+  
 }
 
 TextEditingController propertyNumberController =
@@ -113,14 +120,7 @@ class _MyFormState extends State<MyForm> {
   //       context, new MaterialPageRoute(builder: (context) => Home(1, 0)));
   // }
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   if (id != 0) {
-  //     getOne();
-  //   }
-  // }
+ 
 
   // void getOne() async {
   //   var data =
@@ -248,7 +248,8 @@ class _MyFormState extends State<MyForm> {
               )
             ],
           ),
-        )),
+        ),
+        ),
       ),
     );
   }

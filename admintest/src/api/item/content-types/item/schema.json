@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "items",
+  "info": {
+    "singularName": "item",
+    "pluralName": "items",
+    "displayName": "item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "propertyNum": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "acquisitionDate": {
+      "type": "string"
+    },
+    "estimatedLife": {
+      "type": "string"
+    },
+    "officeDesignation": {
+      "type": "string"
+    },
+    "serialNum": {
+      "type": "string"
+    }
+  }
+}

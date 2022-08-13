@@ -53,49 +53,49 @@ class _MyDetailState extends State<MyDetail> {
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Id: ${item.id}",
+                    "Id: "+item.toString(),
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Property Number: ${item.propertyNum}",
+                    "Property Number: "+ item.propertyNum,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Description: ${item.description}",
+                    "Description: "+item.description,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Acquisition Date: ${item.acquisitionDate}",
+                    "Acquisition Date:"+item.acquisitionDate,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Estimated Life: ${item.estimatedLife}",
+                    "Estimated Life: "+item.estimatedLife,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Office Designation: ${item.officeDesignation}",
+                    "Office Designation:"+item.officeDesignation,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(19),
                   child: Text(
-                    "Serial Number: ${item.serialNum}",
+                    "Serial Number:"+item.serialNum,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),

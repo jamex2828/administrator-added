@@ -2,7 +2,6 @@ import 'package:Login/administrator/add_item.dart';
 import 'package:Login/administrator/item_list.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(Home(0, 0));
 }
@@ -38,14 +37,14 @@ class _HomeState extends State<Home> {
       switch (index) {
         case 0:
           {
-            _title = "Items";
-            _body = MyList();
+           _title = "Add Item";
+            _body = MyForm(id);
             break;
           }
         case 1:
           {
-            _title = "Add Item";
-            _body = MyForm();
+             _title = "Items";
+            _body = MyList();
             break;
           }
       }
@@ -56,12 +55,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(title: Text(_title!)),
+      appBar: AppBar(
+        title: Text(_title!),
+        backgroundColor: const Color(0xfffd5800),
+      ),
       body: _body,
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.table_chart), label: 'View'),
           BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
+          BottomNavigationBarItem(icon: Icon(Icons.table_chart), label: 'View'),
         ],
         currentIndex: _currentIndex,
         onTap: _onTap,
