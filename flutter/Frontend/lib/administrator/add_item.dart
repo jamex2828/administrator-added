@@ -1,19 +1,21 @@
 import 'dart:convert';
-import 'package:Login/administrator/home_main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:Login/administrator/data_class.dart';
 
-
 class HomePageManager {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
-  
 
-  Future addItem(propertyNum, description, acquisitionDate, estimatedLife,      //ADD ITEM
-      officeDesignation, serialNum) async {
+  Future addItem(
+      propertyNum,
+      description,
+      acquisitionDate,
+      estimatedLife, //ADD ITEM
+      officeDesignation,
+      serialNum) async {
     resultNotifier.value = RequestLoadInProgress();
-    const endpoint = 'http://192.168.1.19:1337/api/items';
+    const endpoint = 'http://10.10.10.44:1337/api/items';
     var url = Uri.parse(endpoint);
 
     Map<String, String> headers = {
@@ -28,8 +30,7 @@ class HomePageManager {
         'officeDesignation': officeDesignation,
         'serialNum': serialNum,
       }
-    }
-    );
+    });
     var response = await http.post(
       url,
       headers: headers,
@@ -52,13 +53,11 @@ class HomePageManager {
   }
 }
 
-
 class MyForm extends StatefulWidget {
   int id;
   MyForm(this.id);
   @override
   _MyFormState createState() => _MyFormState();
-  
 }
 
 TextEditingController propertyNumberController =
@@ -120,8 +119,6 @@ class _MyFormState extends State<MyForm> {
   //       context, new MaterialPageRoute(builder: (context) => Home(1, 0)));
   // }
 
- 
-
   // void getOne() async {
   //   var data =
   //       await http.get('http://localhost:1337/api/items${this.id}');
@@ -143,79 +140,81 @@ class _MyFormState extends State<MyForm> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
-            child: Padding(
-          padding: const EdgeInsets.all(19.0),
-          child: Column(
-            children: [
-              Visibility(
-                visible: false,
-                child: TextField(
-                    controller:
-                        TextEditingController(text: item.id.toString())),
-              ),
-              //
-              TextField(
-                controller: TextEditingController(text: item.propertyNum),
-                onChanged: (val) {
-                  item.propertyNum = val;
-                },
-                decoration: const InputDecoration(
-                    labelText: "Property Number",
-                    icon: Icon(Icons.error_outline)),
-              ),
-              //
-              TextField(
-                controller: TextEditingController(text: item.description),
-                onChanged: (val) {
-                  item.description = val;
-                },
-                decoration: const InputDecoration(
-                    labelText: "Description", icon: Icon(Icons.error_outline)),
-              ),
-              //
-              TextField(
-                controller: TextEditingController(text: item.acquisitionDate),
-                onChanged: (val) {
-                  item.acquisitionDate = val;
-                },
-                decoration: const InputDecoration(
-                    labelText: "Acquisition Date",
-                    icon: Icon(Icons.error_outline)),
-              ),
-              //
-              TextField(
-                controller: TextEditingController(text: item.estimatedLife),
-                onChanged: (val) {
-                  item.estimatedLife = val;
-                },
-                decoration: const InputDecoration(
-                    labelText: "Estimated Life",
-                    icon: Icon(Icons.error_outline)),
-              ),
-              //
-              TextField(
-                controller: TextEditingController(text: item.officeDesignation),
-                onChanged: (val) {
-                  item.officeDesignation = val;
-                },
-                decoration: const InputDecoration(
-                    labelText: "Office Designation",
-                    icon: Icon(Icons.error_outline)),
-              ),
-              //
-              TextField(
-                controller: TextEditingController(text: item.serialNum),
-                onChanged: (val) {
-                  item.serialNum = val;
-                },
-                decoration: const InputDecoration(
-                    labelText: "Brand Serial Number",
-                    icon: Icon(Icons.error_outline)),
-              ),
-              //
-              Padding(
-                padding: const EdgeInsets.fromLTRB(35, 20, 0, 0),
-                child: ElevatedButton(
+          child: Padding(
+            padding: const EdgeInsets.all(19.0),
+            child: Column(
+              children: [
+                Visibility(
+                  visible: false,
+                  child: TextField(
+                      controller:
+                          TextEditingController(text: item.id.toString())),
+                ),
+                //
+                TextField(
+                  controller: TextEditingController(text: item.propertyNum),
+                  onChanged: (val) {
+                    item.propertyNum = val;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: "Property Number",
+                      icon: Icon(Icons.error_outline)),
+                ),
+                //
+                TextField(
+                  controller: TextEditingController(text: item.description),
+                  onChanged: (val) {
+                    item.description = val;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: "Description",
+                      icon: Icon(Icons.error_outline)),
+                ),
+                //
+                TextField(
+                  controller: TextEditingController(text: item.acquisitionDate),
+                  onChanged: (val) {
+                    item.acquisitionDate = val;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: "Acquisition Date",
+                      icon: Icon(Icons.error_outline)),
+                ),
+                //
+                TextField(
+                  controller: TextEditingController(text: item.estimatedLife),
+                  onChanged: (val) {
+                    item.estimatedLife = val;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: "Estimated Life",
+                      icon: Icon(Icons.error_outline)),
+                ),
+                //
+                TextField(
+                  controller:
+                      TextEditingController(text: item.officeDesignation),
+                  onChanged: (val) {
+                    item.officeDesignation = val;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: "Office Designation",
+                      icon: Icon(Icons.error_outline)),
+                ),
+                //
+                TextField(
+                  controller: TextEditingController(text: item.serialNum),
+                  onChanged: (val) {
+                    item.serialNum = val;
+                  },
+                  decoration: const InputDecoration(
+                      labelText: "Brand Serial Number",
+                      icon: Icon(Icons.error_outline)),
+                ),
+                //
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(35, 20, 0, 0),
+                  child: ElevatedButton(
                     onPressed: () {
                       stateManager.addItem(
                           propertyNumberController.text,
@@ -225,10 +224,10 @@ class _MyFormState extends State<MyForm> {
                           officeDesignationController.text,
                           serialNumController.text);
                     },
-                     style: ElevatedButton.styleFrom(
-                                primary: const Color(0xfffd5800),
-                              ),
-                              child: const Text("Add Item"),
+                    style: ElevatedButton.styleFrom(
+                      primary: const Color(0xfffd5800),
+                    ),
+                    child: const Text("Add Item"),
                     // child: const Text(
                     //   'Add Item',
                     //   style: TextStyle(
@@ -236,19 +235,19 @@ class _MyFormState extends State<MyForm> {
                     //       fontWeight: FontWeight.bold,
                     //       color: Colors.white),
                     // )
-                    ),
+                  ),
 
-                // child: MaterialButton(
-                //   onPressed: addItem,
-                //   minWidth: double.infinity,
-                //   color: Colors.orange,
-                //   textColor: Colors.white,
-                //   child: const Text("Save Item"),
-                // ),
-              )
-            ],
+                  // child: MaterialButton(
+                  //   onPressed: addItem,
+                  //   minWidth: double.infinity,
+                  //   color: Colors.orange,
+                  //   textColor: Colors.white,
+                  //   child: const Text("Save Item"),
+                  // ),
+                )
+              ],
+            ),
           ),
-        ),
         ),
       ),
     );

@@ -17,17 +17,15 @@ class _MyListState extends State<MyList> {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
 
   late int id;
-  Future getItems() //not working
-  // Future<void> getItems()
-  async {
+  // Future getItems() //not working
+    Future<void> getItems() async {
     resultNotifier.value = RequestLoadInProgress();
-    final response = await http.get(
-      Uri.parse('http://192.168.1.19:1337/api/items'),
+    Response response = await http.get(
+      Uri.parse('http://192.168.1.8:1337/api/items'),
     );
-
     print('Status code: ${response.statusCode}');
     print('Headers: ${response.headers}');
-    print('Item: ${response.body}');
+    print('Items: ${response.body}');
     _handleResponse(response);
   }
 
@@ -66,15 +64,15 @@ class _MyListState extends State<MyList> {
                     // subtitle: Text(snapshot.data[index].description),
                     ///////////////////////////////////////////////////////////////////
                     isThreeLine: true,
-                    title: Text(snapshot.data[index].propertyNum),
+                    title: Text(snapshot.data![index].propertyNum),
                     subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("by. " + snapshot.data[index].description),
-                          Text(snapshot.data[index].acquisitionDate),
-                          Text(snapshot.data[index].estimatedLife),
-                          Text(snapshot.data[index].officeDesignation),
-                          Text(snapshot.data[index].serialNum),
+                          Text(snapshot.data![index].description),
+                          Text(snapshot.data![index].acquisitionDate),
+                          Text(snapshot.data![index].estimatedLife),
+                          Text(snapshot.data![index].officeDesignation),
+                          Text(snapshot.data![index].serialNum),
                         ]),
 
                     /////////////////////////////////////////////////////////////////////////////

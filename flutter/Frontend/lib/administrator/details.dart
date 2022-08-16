@@ -12,14 +12,13 @@ class MyDetail extends StatefulWidget {
 }
 
 class _MyDetailState extends State<MyDetail> {
-  // List<Item> item = allItem;
   Item item;
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
   Future<void> deleteItem() async {
-    //DELETE
+                                                                                //DELETE
     resultNotifier.value = RequestLoadInProgress();
     Response response = await http.delete(
-      Uri.parse('http://localhost:1337/api/items'), //edit filter
+      Uri.parse('http://localhost:1337/api/items/1'), //edit filter
     );
     print('Status code: ${response.statusCode}');
     print('Deleted item: ${response.body}');
