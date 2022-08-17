@@ -18,7 +18,7 @@ class _MyDetailState extends State<MyDetail> {
                                                                                 //DELETE
     resultNotifier.value = RequestLoadInProgress();
     Response response = await http.delete(
-      Uri.parse('http://localhost:1337/api/items/1'), //edit filter
+      Uri.parse('http://10.10.10.15:1337/api/items/1'), //edit filter
     );
     print('Status code: ${response.statusCode}');
     print('Deleted item: ${response.body}');

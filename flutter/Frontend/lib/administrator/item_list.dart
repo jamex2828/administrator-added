@@ -16,12 +16,11 @@ class MyList extends StatefulWidget {
 class _MyListState extends State<MyList> {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
 
-  late int id;
   // Future getItems() //not working
-    Future<void> getItems() async {
+  Future<void> getItems() async {
     resultNotifier.value = RequestLoadInProgress();
     Response response = await http.get(
-      Uri.parse('http://192.168.1.8:1337/api/items'),
+      Uri.parse('http://10.10.10.15:1337/api/items'),
     );
     print('Status code: ${response.statusCode}');
     print('Headers: ${response.headers}');
@@ -40,7 +39,7 @@ class _MyListState extends State<MyList> {
     void initState() {
       // TODO: implement initState
       super.initState();
-      if (id != 0) {
+      if (item == 0) {
         getItems();
       }
     }
@@ -53,7 +52,7 @@ class _MyListState extends State<MyList> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.data == null) {
             return const Center(
-              child: Text("Loading..."),
+              child: Text("Data null"),
             );
           } else {
             return ListView.builder(
@@ -64,15 +63,15 @@ class _MyListState extends State<MyList> {
                     // subtitle: Text(snapshot.data[index].description),
                     ///////////////////////////////////////////////////////////////////
                     isThreeLine: true,
-                    title: Text(snapshot.data![index].propertyNum),
+                    title: Text(snapshot.data[index]['property_no']),
                     subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(snapshot.data![index].description),
-                          Text(snapshot.data![index].acquisitionDate),
-                          Text(snapshot.data![index].estimatedLife),
-                          Text(snapshot.data![index].officeDesignation),
-                          Text(snapshot.data![index].serialNum),
+                          Text(snapshot.data[index]['description']),
+                          Text(snapshot.data[index]['acquisition_date']),
+                          Text(snapshot.data[index]['estimated_life']),
+                          Text(snapshot.data[index]['office_designation']),
+                          Text(snapshot.data[index]['brand_serial_no']),
                         ]),
 
                     /////////////////////////////////////////////////////////////////////////////

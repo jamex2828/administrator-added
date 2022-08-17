@@ -15,7 +15,7 @@ class HomePageManager {
       officeDesignation,
       serialNum) async {
     resultNotifier.value = RequestLoadInProgress();
-    const endpoint = 'http://10.10.10.44:1337/api/items';
+    const endpoint = 'http://10.10.10.15:1337/api/items';
     var url = Uri.parse(endpoint);
 
     Map<String, String> headers = {
@@ -83,63 +83,15 @@ Item item = Item(
 
 class _MyFormState extends State<MyForm> {
   final stateManager = HomePageManager();
-  // int id;
-  // _MyFormState(this.id);
-  // Item item = Item(0, '', '', '', '', '', '');
-  // Future save() async {
-  //   if (item.id == 0) {
-  //     await http.post('http://10.10.10.15:1337/api/administrators',
-  //         headers: <String, String>{
-  //           'Context-Type': 'application/json;charset=UTF-8'
-  //         },
-  //         body: <String, String>{
-  //           'propertyNumber': item.propertyNumber,
-  //           'description': item.description,
-  //           'acquisitionDate': item.acquisitionDate,
-  //           'estimatedLife': item.estimatedLife,
-  //           'officeDesignation': item.officeDesignation,
-  //           'brandSerialNumber': item.brandSerialNumber
-  //         });
-  //   } else {
-  //     await http.put(
-  //         'http://10.10.10.15:1337/api/administrators${item.id.toString()}',
-  //         headers: <String, String>{
-  //           'Context-Type': 'application/json;charset=UTF-8'
-  //         },
-  //         body: <String, String>{
-  //           'propertyNumber': item.propertyNumber,
-  //           'description': item.description,
-  //           'acquisitionDate': item.acquisitionDate,
-  //           'estimatedLife': item.estimatedLife,
-  //           'officeDesignation': item.officeDesignation,
-  //           'brandSerialNumber': item.brandSerialNumber
-  //         });
-  //   }
-  //   Navigator.push(
-  //       context, new MaterialPageRoute(builder: (context) => Home(1, 0)));
-  // }
-
-  // void getOne() async {
-  //   var data =
-  //       await http.get('http://localhost:1337/api/items${this.id}');
-  //   var u = json.decode(data.body);
-  //   setState(() {
-  //     item = Item(
-  //         u['id'],
-  //         u['propertyNumber'],
-  //         u['description'],
-  //         u['acquisitionDate'],
-  //         u['estimatedLife'],
-  //         u['officeDesignation'],
-  //         u['brandSerialNumber']);
-  //   });
-  // }
+  final TextEditingController _textController = new TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Padding(
             padding: const EdgeInsets.all(19.0),
             child: Column(
@@ -151,7 +103,7 @@ class _MyFormState extends State<MyForm> {
                           TextEditingController(text: item.id.toString())),
                 ),
                 //
-                TextField(
+                TextFormField(
                   controller: TextEditingController(text: item.propertyNum),
                   onChanged: (val) {
                     item.propertyNum = val;
@@ -159,9 +111,15 @@ class _MyFormState extends State<MyForm> {
                   decoration: const InputDecoration(
                       labelText: "Property Number",
                       icon: Icon(Icons.error_outline)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 //
-                TextField(
+                TextFormField(
                   controller: TextEditingController(text: item.description),
                   onChanged: (val) {
                     item.description = val;
@@ -169,9 +127,15 @@ class _MyFormState extends State<MyForm> {
                   decoration: const InputDecoration(
                       labelText: "Description",
                       icon: Icon(Icons.error_outline)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 //
-                TextField(
+                TextFormField(
                   controller: TextEditingController(text: item.acquisitionDate),
                   onChanged: (val) {
                     item.acquisitionDate = val;
@@ -179,9 +143,15 @@ class _MyFormState extends State<MyForm> {
                   decoration: const InputDecoration(
                       labelText: "Acquisition Date",
                       icon: Icon(Icons.error_outline)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 //
-                TextField(
+                TextFormField(
                   controller: TextEditingController(text: item.estimatedLife),
                   onChanged: (val) {
                     item.estimatedLife = val;
@@ -189,9 +159,15 @@ class _MyFormState extends State<MyForm> {
                   decoration: const InputDecoration(
                       labelText: "Estimated Life",
                       icon: Icon(Icons.error_outline)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 //
-                TextField(
+                TextFormField(
                   controller:
                       TextEditingController(text: item.officeDesignation),
                   onChanged: (val) {
@@ -200,50 +176,58 @@ class _MyFormState extends State<MyForm> {
                   decoration: const InputDecoration(
                       labelText: "Office Designation",
                       icon: Icon(Icons.error_outline)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 //
-                TextField(
+                TextFormField(
                   controller: TextEditingController(text: item.serialNum),
-                  onChanged: (val) {
-                    item.serialNum = val;
+                  onSaved: (value) {
+                    item.serialNum = value!;
                   },
                   decoration: const InputDecoration(
                       labelText: "Brand Serial Number",
                       icon: Icon(Icons.error_outline)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 //
                 Padding(
                   padding: const EdgeInsets.fromLTRB(35, 20, 0, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      stateManager.addItem(
-                          propertyNumberController.text,
-                          descriptionController.text,
-                          acquisitionDateController.text,
-                          estimatedLifeController.text,
-                          officeDesignationController.text,
-                          serialNumController.text);
+                      // _controller.clear();
+                      if (_formKey.currentState!.validate()) {
+                        stateManager.addItem(
+                            propertyNumberController.text,
+                            descriptionController.text,
+                            acquisitionDateController.text,
+                            estimatedLifeController.text,
+                            officeDesignationController.text,
+                            serialNumController.text);
+                        setState(() {
+                          _textController.clear(); //clearfield tarongonon pa
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Item Added Successfully')),
+                        );
+                      }
                     },
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xfffd5800),
-                    ),
-                    child: const Text("Add Item"),
-                    // child: const Text(
-                    //   'Add Item',
-                    //   style: TextStyle(
-                    //       fontSize: 18,
-                    //       fontWeight: FontWeight.bold,
-                    //       color: Colors.white),
-                    // )
-                  ),
 
-                  // child: MaterialButton(
-                  //   onPressed: addItem,
-                  //   minWidth: double.infinity,
-                  //   color: Colors.orange,
-                  //   textColor: Colors.white,
-                  //   child: const Text("Save Item"),
-                  // ),
+                    // style: ElevatedButton.styleFrom(
+                    //   primary: const Color(0xfffd5800),
+                    // ),
+                    child: const Text("Add Item"),
+                  ),
                 )
               ],
             ),
