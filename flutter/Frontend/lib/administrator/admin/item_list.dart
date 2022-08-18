@@ -1,9 +1,9 @@
-import 'package:Login/administrator/add_item.dart';
-import 'package:Login/administrator/details.dart';
+import 'package:Login/administrator/admin/add_item.dart';
+import 'package:Login/administrator/admin/data_class.dart';
+import 'package:Login/administrator/admin/details.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:Login/administrator/data_class.dart';
 import 'dart:async';
 
 class MyList extends StatefulWidget {

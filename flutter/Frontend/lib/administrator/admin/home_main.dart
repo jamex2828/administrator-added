@@ -1,5 +1,5 @@
-import 'package:Login/administrator/add_item.dart';
-import 'package:Login/administrator/item_list.dart';
+import 'package:Login/administrator/admin/add_item.dart';
+import 'package:Login/administrator/admin/item_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {

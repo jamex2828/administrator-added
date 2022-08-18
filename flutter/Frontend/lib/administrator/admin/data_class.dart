@@ -1,3 +1,25 @@
+class User {
+  String name;
+  String email;
+  String password;
+  User(this.name, this.email, this.password);
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    final attributes = json['attributes'];
+    return User(
+      attributes['name'],
+      attributes['email'],
+      attributes['password'],
+    );
+  }
+
+  get id => null;
+}
+
+
+
+
+
 class Item {
   String propertyNum;
   String description;

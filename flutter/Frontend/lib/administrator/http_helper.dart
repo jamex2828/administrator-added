@@ -1,4 +1,4 @@
-import 'package:Login/administrator/data_class.dart';
+import 'package:Login/administrator/admin/data_class.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 

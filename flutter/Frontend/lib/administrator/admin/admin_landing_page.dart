@@ -1,5 +1,7 @@
-import 'package:Login/administrator/home_main.dart';
-import 'package:Login/administrator/userlist.dart';
+import 'package:Login/administrator/admin/home_main.dart';
+import 'package:Login/administrator/user/userlist.dart';
+import 'package:Login/pages/landing_page.dart';
+import 'package:Login/storage/secureStorage.dart';
 import 'package:flutter/material.dart';
 //import 'dashboard.dart';
 
@@ -15,6 +17,29 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+         backgroundColor: const Color(0xffe9692c),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        onPressed: () {
+          storageAuth store = storageAuth();
+          //Basically deleting the jwt and pushing the user to start page to revalidate
+          //PushAndRemoveUntil Removes all the pages from Navigator and pushes a page to it
+          store.logOutUser().then((value) => Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const MaterialApp(
+                  home: HomePage(),
+                ),
+              ),
+              (route) => false));
+        },
+        label: const Text('Log out'),
+        icon: const Icon(Icons.logout),
+      ),
       appBar: AppBar(
         title: const Text('CL1M Inventory'),
       ),
@@ -52,6 +77,7 @@ class Dashboard extends StatelessWidget {
                   spacing: 20.0,
                   runSpacing: 20.0,
                   children: [
+                    //users
                     SizedBox(
                       width: 150.0,
                       height: 150.0,
@@ -61,7 +87,7 @@ class Dashboard extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Users()));
+                                  builder: (context) =>  Users()));
                         },
                         child: Card(
                           color: const Color.fromARGB(225, 21, 21, 21),
@@ -89,6 +115,8 @@ class Dashboard extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                    // HOME
                     SizedBox(
                       width: 150.0,
                       height: 150.0,

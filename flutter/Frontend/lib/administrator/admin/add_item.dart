@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'package:Login/administrator/admin/data_class.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
-import 'package:Login/administrator/data_class.dart';
 
 class HomePageManager {
   final resultNotifier = ValueNotifier<RequestState>(RequestInitial());
